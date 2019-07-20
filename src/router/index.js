@@ -147,6 +147,12 @@ export const constantRoutes = [
         name: 'unix',
         component: () => import('@/views/unix/index'),
         meta: { title: 'unix', icon: 'form' }
+      },
+      {
+        path: 'imgtob64',
+        name: 'imgtob64',
+        component: () => import('@/views/image/tob64/index'),
+        meta: { title: 'img2b64', icon: 'form' }
       }
     ]
   },

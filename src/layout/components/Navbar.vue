@@ -34,6 +34,7 @@
     <el-submenu index="5">
         <template slot="title">转换工具</template>
         <el-menu-item index="/transfer/unix">Unix时间戳</el-menu-item>
+        <el-menu-item index="/transfer/imgtob64">图片转Base64</el-menu-item>
     </el-submenu>
     <el-submenu index="6">
         <template slot="title">前端资源</template>
@@ -55,29 +56,6 @@
         <el-menu-item index="/ide/ace">在线编辑器</el-menu-item>
 
     </el-submenu>
-    <!--
-    <el-submenu >
-        <template slot="title">对照表</template>
-
-        <el-menu-item index="/dashboard">主页</el-menu-item>
-
-
-    </el-submenu>
-
-    <el-submenu >
-        <template slot="title">在线平台</template>
-
-        <el-menu-item index="/dashboard">主页</el-menu-item>
-
-        <!--<el-menu-item index="/ide/ace">在线编辑器</el-menu-item>
-
-    </el-submenu>
-    -->
-    <!--<el-menu-item index="3">常用地址收录</el-submenu>-->
-    <!--
-      el:https://element.eleme.io/#/zh-CN/component/menu
-
-    -->
   </el-menu>
 </div>
 </template>
