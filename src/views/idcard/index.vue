@@ -14,17 +14,17 @@
         <span>身份证号码随机生成</span>
       </div>
 
-      <el-form ref="form" :model="form" label-width="120px">
+      <el-form ref="form" :model="form">
         <el-form-item label="出生地">
           <v-region class="form-control" :ui="true" :column="true" :selected="selected" @values="regionChange" />
         </el-form-item>
         <el-form-item label="出生日期">
-          <el-col :span="3">
-            <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%;" />
+          <el-col :span="5">
+            <el-date-picker v-model="form.date1" type="date" @change="dateChangebirthday" format="yyyy-MM-dd" value-format="yyyy-MM-dd" placeholder="Pick a date" style="width: 100%;" />
           </el-col>
         </el-form-item>
         <el-form-item label="个数">
-          <el-col :span="2">
+          <el-col :span="3">
             <el-select v-model="form.nums">
               <el-option label="5" value="5" />
               <el-option label="20" value="20" />
@@ -139,6 +139,7 @@ export default {
       var _this = this
       var fm = _this.form
       const region = fm.region
+      console.log("date" + fm.date1)
       const birth = fm.date1.replace(new RegExp('-', 'g'), '')
       const delivery = fm.delivery
       const nums = fm.nums
@@ -177,18 +178,34 @@ export default {
       // }
 
       ctx.fillStyle = '#191919'
-      ctx.font = '13px 微软雅黑'
-      ctx.fillText(row.name, 115, 94)
+      ctx.font = 'normal small-caps bold 13px arial'
+
+      var nameStr = "";
+      for(var i=0;i<row.name.length;i++) {
+        nameStr += (" "+ row.name.charAt(i))
+      }
+      console.log(nameStr)
+
+
+      ctx.fillText(nameStr, 115, 94)
       ctx.fillText(row.sex, 115, 126)
       ctx.fillText('汉', 215, 126)
       ctx.fillText(row.birth.substring(0, 4), 115, 158)// 年
       ctx.fillText(row.birth.substring(4, 6), 190, 158)// 月
       ctx.fillText(row.birth.substring(6, 8), 235, 158)// 日
-      ctx.fillText(row.addr, 115, 192)// 地址
-      ctx.fillText(row.no, 180, 278)// 身份证号
+      ctx.fillText(row.addr.length>12?row.addr.substring(0,12):row.addr, 115, 192)// 地址
 
-      ctx.fillText('测试啊', 205, 585)// 身份证号
-      ctx.fillText((row.birth.substring(0, 4) + '.' + row.birth.substring(4, 6) + '.' + row.birth.substring(6, 8)) + '-2099.01.01', 205, 618)// 身份证号
+      var str = "";
+      for(var i=0;i<row.no.length;i++) {
+        str += (" "+ row.no.charAt(i))
+      }
+      console.log(str)
+
+
+      ctx.fillText(str, 190, 278)// 身份证号
+
+      ctx.fillText('   测试啊', 205, 585)// 身份证号
+      ctx.fillText('   2014.01.01-2034.01.01', 205, 618)// 身份证号
 
       ctx.save()
       console.log(canvas.toDataURL())
@@ -275,6 +292,9 @@ export default {
       var givenName = givenNames[this.randomNum(0, 70)]
       var name = familyName + givenName
       return name
+    },
+    dateChangebirthday(e) {
+      this.form.date1 = e
     }
   }
 }

@@ -8,8 +8,8 @@
     </el-submenu>
     <el-submenu index="3">
       <template slot="title">加密编码</template>
-      <el-menu-item index="/enc/base64编码">Base64</el-menu-item>
-      <el-menu-item index="/enc/url编码">urlencode</el-menu-item>
+      <el-menu-item index="/enc/base64">Base64编码</el-menu-item>
+      <el-menu-item index="/enc/urlencode">urlencode编码</el-menu-item>
       <el-submenu index="3-3">
             <template slot="title">签名</template>
             <el-menu-item index="/enc/md5">md5</el-menu-item>
@@ -63,8 +63,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './Sidebar/SidebarItem'
-import variables from '@/styles/variables.scss'
-import elementui from '@/styles/element-ui.scss'
 
 
 export default {
