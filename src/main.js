@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import vRegion from 'v-region'
 
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
@@ -32,6 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 Vue.use(vRegion)
+Vue.use(iView)
 
 Vue.config.productionTip = false
 

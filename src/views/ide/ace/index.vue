@@ -1,51 +1,52 @@
 <template>
   <div class="app-container">
     <el-form>
-        <el-row>
+      <el-row>
         <el-col :span="4">
-        <el-form-item label="语言">
-          <el-select class="value" v-model="modePath" @change="handleModelPathChange" size="mini" value-key="name">
-            <el-option v-for="mode in modeArray"
-                       :key="mode.name"
-                       :label="mode.name"
-                       :value="mode.path">
-            </el-option>
-          </el-select>
-        </el-form-item>
+          <el-form-item label="语言">
+            <el-select v-model="modePath" class="value" size="mini" value-key="name" @change="handleModelPathChange">
+              <el-option
+                v-for="mode in modeArray"
+                :key="mode.name"
+                :label="mode.name"
+                :value="mode.path"
+              />
+            </el-select>
+          </el-form-item>
         </el-col>
         <el-col :span="4">
-        <el-form-item label="换行">
+          <el-form-item label="换行">
 
-          <el-select class="value" v-model="wrap" @change="handleWrapChange" size="mini" value-key="name">
-            <el-option v-for="wrap in wrapArray"
-                       :key="wrap.name"
-                       :label="wrap.name"
-                       :value="wrap.value">
-            </el-option>
-          </el-select>
-        </el-form-item>
+            <el-select v-model="wrap" class="value" size="mini" value-key="name" @change="handleWrapChange">
+              <el-option
+                v-for="wrap in wrapArray"
+                :key="wrap.name"
+                :label="wrap.name"
+                :value="wrap.value"
+              />
+            </el-select>
+          </el-form-item>
         </el-col>
-        </el-row>
-        <el-row>
+      </el-row>
+      <el-row>
         <el-form-item>
-        <el-col :span="20">
-        <div class="ace-editor" ref="ace"></div>
-        </el-col>
+          <el-col :span="20">
+            <div ref="ace" class="ace-editor" />
+          </el-col>
 
         </el-form-item>
       </el-row>
     </el-form>
-
 
   </div>
 </template>
 
 <script>
 
-import ace from 'ace-builds'
-import 'ace-builds/webpack-resolver' // 在 webpack 环境中使用必须要导入
-import 'ace-builds/src-noconflict/ext-language_tools'
-import 'ace-builds/src-noconflict/theme-monokai' // 默认设置的主题
+//import ace from 'ace-builds'
+//import 'ace-builds/webpack-resolver' // 在 webpack 环境中使用必须要导入
+//import 'ace-builds/src-noconflict/ext-language_tools'
+//import 'ace-builds/src-noconflict/theme-monokai' // 默认设置的主题
 /**
 import 'ace-builds/src-noconflict/mode-abap.js'
 import 'ace-builds/src-noconflict/mode-abc.js'
@@ -215,119 +216,117 @@ import 'ace-builds/src-noconflict/mode-yaml.js'
 import 'ace-builds/src-noconflict/mode-zeek.js'
 **/
 export default {
-  mounted () {
-      this.aceEditor = ace.edit(this.$refs.ace, {
-        maxLines: 40, // 最大行数，超过会自动出现滚动条
-        minLines: 40, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
-        fontSize: 14, // 编辑器内字体大小
-        theme: this.themePath, // 默认设置的主题
-        mode: this.modePath, // 默认设置的语言模式
-        tabSize: 4 // 制表符设置为 4 个空格大小
-      })
-
-      this.aceEditor.setOptions({
-          enableSnippets: true,
-          enableLiveAutocompletion: true,
-          enableBasicAutocompletion: true
-      })
-
-      this.aceEditor.getSession().on('change', this.change)
-
-    },
   data() {
     return {
-        aceEditor: null,
-        themePath: 'ace/theme/monokai', // 不导入 webpack-resolver，该模块路径会报错
-        modePath: 'ace/mode/javascript', // 同
-        wrap: false,
+      aceEditor: null,
+      themePath: 'ace/theme/monokai', // 不导入 webpack-resolver，该模块路径会报错
+      modePath: 'ace/mode/javascript', // 同
+      wrap: false,
 
-        wrapArray : [{
-            name: '开启',
-            value: true
-        }, {
-            name: '关闭',
-            value: false
-        }],
+      wrapArray: [{
+        name: '开启',
+        value: true
+      }, {
+        name: '关闭',
+        value: false
+      }],
 
-        modeArray : [{
-            name: 'JavaScript',
-            path: 'ace/mode/javascript'
-        }, {
-            name: 'HTML',
-            path: 'ace/mode/html'
-        }, {
-            name: 'Freemarker',
-            path: 'ace/mode/ftl'
-        } , {
-            name: 'Velocity',
-            path: 'ace/mode/velocity'
-        }, {
-            name: 'CSS',
-            path: 'ace/mode/css'
-        }, {
-            name: 'SCSS',
-            path: 'ace/mode/scss'
-        }, {
-            name: 'Json',
-            path: 'ace/mode/json'
-        }, {
-            name: 'Xml',
-            path: 'ace/mode/xml'
-        }, {
-            name: 'Yaml',
-            path: 'ace/mode/yaml'
-        }, {
-            name: 'Properties',
-            path: 'ace/mode/properties'
-        }, {
-            name: 'Java',
-            path: 'ace/mode/java'
-        }, {
-            name: 'Kotlin',
-            path: 'ace/mode/kotlin'
-        }, {
-            name: 'Swift',
-            path: 'ace/mode/swift'
-        }, {
-            name: 'Ruby',
-            path: 'ace/mode/ruby'
-        }, {
-            name: 'Scala',
-            path: 'ace/mode/scala'
-        }, {
-            name: 'Python',
-            path: 'ace/mode/python'
-        }, {
-            name: 'Go',
-            path: 'ace/mode/golang'
-        }, {
-            name: 'Erlang',
-            path: 'ace/mode/erlang'
-        }, {
-            name: 'Protobuf',
-            path: 'ace/mode/protobuf'
-        }, {
-            name: 'sh',
-            path: 'ace/mode/sh'
-        }
-        ]
-
+      modeArray: [{
+        name: 'JavaScript',
+        path: 'ace/mode/javascript'
+      }, {
+        name: 'HTML',
+        path: 'ace/mode/html'
+      }, {
+        name: 'Freemarker',
+        path: 'ace/mode/ftl'
+      }, {
+        name: 'Velocity',
+        path: 'ace/mode/velocity'
+      }, {
+        name: 'CSS',
+        path: 'ace/mode/css'
+      }, {
+        name: 'SCSS',
+        path: 'ace/mode/scss'
+      }, {
+        name: 'Json',
+        path: 'ace/mode/json'
+      }, {
+        name: 'Xml',
+        path: 'ace/mode/xml'
+      }, {
+        name: 'Yaml',
+        path: 'ace/mode/yaml'
+      }, {
+        name: 'Properties',
+        path: 'ace/mode/properties'
+      }, {
+        name: 'Java',
+        path: 'ace/mode/java'
+      }, {
+        name: 'Kotlin',
+        path: 'ace/mode/kotlin'
+      }, {
+        name: 'Swift',
+        path: 'ace/mode/swift'
+      }, {
+        name: 'Ruby',
+        path: 'ace/mode/ruby'
+      }, {
+        name: 'Scala',
+        path: 'ace/mode/scala'
+      }, {
+        name: 'Python',
+        path: 'ace/mode/python'
+      }, {
+        name: 'Go',
+        path: 'ace/mode/golang'
+      }, {
+        name: 'Erlang',
+        path: 'ace/mode/erlang'
+      }, {
+        name: 'Protobuf',
+        path: 'ace/mode/protobuf'
+      }, {
+        name: 'sh',
+        path: 'ace/mode/sh'
+      }
+      ]
 
     }
   },
-  methods: {
-      handleModelPathChange (modelPath) {
-          console.log(modelPath)
-          this.aceEditor.getSession().setMode(modelPath)
-      },
-      handleWrapChange (wrap) {
-          this.aceEditor.getSession().setUseWrapMode(wrap)
-      },
+  mounted() {
+    this.aceEditor = ace.edit(this.$refs.ace, {
+      maxLines: 40, // 最大行数，超过会自动出现滚动条
+      minLines: 40, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+      fontSize: 14, // 编辑器内字体大小
+      theme: this.themePath, // 默认设置的主题
+      mode: this.modePath, // 默认设置的语言模式
+      tabSize: 4 // 制表符设置为 4 个空格大小
+    })
 
-      change () {
-          console.log(this.aceEditor.getSession().getValue())
-          this.$emit('input', this.aceEditor.getSession().getValue())
-      }
+    this.aceEditor.setOptions({
+      enableSnippets: true,
+      enableLiveAutocompletion: true,
+      enableBasicAutocompletion: true
+    })
+
+    this.aceEditor.getSession().on('change', this.change)
+  },
+  methods: {
+    handleModelPathChange(modelPath) {
+      console.log(modelPath)
+      this.aceEditor.getSession().setMode(modelPath)
+    },
+    handleWrapChange(wrap) {
+      this.aceEditor.getSession().setUseWrapMode(wrap)
+    },
+
+    change() {
+      console.log(this.aceEditor.getSession().getValue())
+      this.$emit('input', this.aceEditor.getSession().getValue())
+    }
 
   }
 }

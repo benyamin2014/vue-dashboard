@@ -1,0 +1,240 @@
+<template>
+  <div class="app-container">
+    <el-collapse v-model="activeNames">
+      <el-collapse-item name="1">
+        <template slot="title">
+          <span style="color:red">简介说明</span>
+        </template>
+        <div>MIME(Multipurpose Internet Mail Extensions)是描述消息内容类型的因特网标准。MIME 消息能包含文本、图像、音频、视频以及其他应用程序专用的数据</div>
+      </el-collapse-item>
+    </el-collapse>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>MIME类型(Content-Type)</span>
+      </div>
+
+      <el-table
+        :data="list"
+        border
+        fit
+        highlight-current-row
+      >
+        <el-table-column label="类型/子类型" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.content_type }}
+          </template>
+        </el-table-column>
+        <el-table-column label="扩展名" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.extend }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
+
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      activeNames: ['1'],
+      list: [
+            {'content_type':'application/envoy','extend':'evy'},
+            {'content_type':'application/fractals','extend':'fif'},
+            {'content_type':'application/futuresplash','extend':'spl'},
+            {'content_type':'application/hta','extend':'hta'},
+            {'content_type':'application/internet-property-stream','extend':'acx'},
+            {'content_type':'application/mac-binhex40','extend':'hqx'},
+            {'content_type':'application/msword','extend':'doc'},
+            {'content_type':'application/msword','extend':'dot'},
+            {'content_type':'application/octet-stream','extend':'*'},
+            {'content_type':'application/octet-stream','extend':'bin'},
+            {'content_type':'application/octet-stream','extend':'class'},
+            {'content_type':'application/octet-stream','extend':'dms'},
+            {'content_type':'application/octet-stream','extend':'exe'},
+            {'content_type':'application/octet-stream','extend':'lha'},
+            {'content_type':'application/octet-stream','extend':'lzh'},
+            {'content_type':'application/oda','extend':'oda'},
+            {'content_type':'application/olescript','extend':'axs'},
+            {'content_type':'application/pdf','extend':'pdf'},
+            {'content_type':'application/pics-rules','extend':'prf'},
+            {'content_type':'application/pkcs10','extend':'p10'},
+            {'content_type':'application/pkix-crl','extend':'crl'},
+            {'content_type':'application/postscript','extend':'ai'},
+            {'content_type':'application/postscript','extend':'eps'},
+            {'content_type':'application/postscript','extend':'ps'},
+            {'content_type':'application/rtf','extend':'rtf'},
+            {'content_type':'application/set-payment-initiation','extend':'setpay'},
+            {'content_type':'application/set-registration-initiation','extend':'setreg'},
+            {'content_type':'application/vnd.ms-excel','extend':'xla'},
+            {'content_type':'application/vnd.ms-excel','extend':'xlc'},
+            {'content_type':'application/vnd.ms-excel','extend':'xlm'},
+            {'content_type':'application/vnd.ms-excel','extend':'xls'},
+            {'content_type':'application/vnd.ms-excel','extend':'xlt'},
+            {'content_type':'application/vnd.ms-excel','extend':'xlw'},
+            {'content_type':'application/vnd.ms-outlook','extend':'msg'},
+            {'content_type':'application/vnd.ms-pkicertstore','extend':'sst'},
+            {'content_type':'application/vnd.ms-pkiseccat','extend':'cat'},
+            {'content_type':'application/vnd.ms-pkistl','extend':'stl'},
+            {'content_type':'application/vnd.ms-powerpoint','extend':'pot'},
+            {'content_type':'application/vnd.ms-powerpoint','extend':'pps'},
+            {'content_type':'application/vnd.ms-powerpoint','extend':'ppt'},
+            {'content_type':'application/vnd.ms-project','extend':'mpp'},
+            {'content_type':'application/vnd.ms-works','extend':'wcm'},
+            {'content_type':'application/vnd.ms-works','extend':'wdb'},
+            {'content_type':'application/vnd.ms-works','extend':'wks'},
+            {'content_type':'application/vnd.ms-works','extend':'wps'},
+            {'content_type':'application/winhlp','extend':'hlp'},
+            {'content_type':'application/x-bcpio','extend':'bcpio'},
+            {'content_type':'application/x-cdf','extend':'cdf'},
+            {'content_type':'application/x-compress','extend':'z'},
+            {'content_type':'application/x-compressed','extend':'tgz'},
+            {'content_type':'application/x-cpio','extend':'cpio'},
+            {'content_type':'application/x-csh','extend':'csh'},
+            {'content_type':'application/x-director','extend':'dcr'},
+            {'content_type':'application/x-director','extend':'dir'},
+            {'content_type':'application/x-director','extend':'dxr'},
+            {'content_type':'application/x-dvi','extend':'dvi'},
+            {'content_type':'application/x-gtar','extend':'gtar'},
+            {'content_type':'application/x-gzip','extend':'gz'},
+            {'content_type':'application/x-hdf','extend':'hdf'},
+            {'content_type':'application/x-internet-signup','extend':'ins'},
+            {'content_type':'application/x-internet-signup','extend':'isp'},
+            {'content_type':'application/x-iphone','extend':'iii'},
+            {'content_type':'application/x-javascript','extend':'js'},
+            {'content_type':'application/x-latex','extend':'latex'},
+            {'content_type':'application/x-msaccess','extend':'mdb'},
+            {'content_type':'application/x-mscardfile','extend':'crd'},
+            {'content_type':'application/x-msclip','extend':'clp'},
+            {'content_type':'application/x-msdownload','extend':'dll'},
+            {'content_type':'application/x-msmediaview','extend':'m13'},
+            {'content_type':'application/x-msmediaview','extend':'m14'},
+            {'content_type':'application/x-msmediaview','extend':'mvb'},
+            {'content_type':'application/x-msmetafile','extend':'wmf'},
+            {'content_type':'application/x-msmoney','extend':'mny'},
+            {'content_type':'application/x-mspublisher','extend':'pub'},
+            {'content_type':'application/x-msschedule','extend':'scd'},
+            {'content_type':'application/x-msterminal','extend':'trm'},
+            {'content_type':'application/x-mswrite','extend':'wri'},
+            {'content_type':'application/x-netcdf','extend':'cdf'},
+            {'content_type':'application/x-netcdf','extend':'nc'},
+            {'content_type':'application/x-perfmon','extend':'pma'},
+            {'content_type':'application/x-perfmon','extend':'pmc'},
+            {'content_type':'application/x-perfmon','extend':'pml'},
+            {'content_type':'application/x-perfmon','extend':'pmr'},
+            {'content_type':'application/x-perfmon','extend':'pmw'},
+            {'content_type':'application/x-pkcs12','extend':'p12'},
+            {'content_type':'application/x-pkcs12','extend':'pfx'},
+            {'content_type':'application/x-pkcs7-certificates','extend':'p7b'},
+            {'content_type':'application/x-pkcs7-certificates','extend':'spc'},
+            {'content_type':'application/x-pkcs7-certreqresp','extend':'p7r'},
+            {'content_type':'application/x-pkcs7-mime','extend':'p7c'},
+            {'content_type':'application/x-pkcs7-mime','extend':'p7m'},
+            {'content_type':'application/x-pkcs7-signature','extend':'p7s'},
+            {'content_type':'application/x-sh','extend':'sh'},
+            {'content_type':'application/x-shar','extend':'shar'},
+            {'content_type':'application/x-shockwave-flash','extend':'swf'},
+            {'content_type':'application/x-stuffit','extend':'sit'},
+            {'content_type':'application/x-sv4cpio','extend':'sv4cpio'},
+            {'content_type':'application/x-sv4crc','extend':'sv4crc'},
+            {'content_type':'application/x-tar','extend':'tar'},
+            {'content_type':'application/x-tcl','extend':'tcl'},
+            {'content_type':'application/x-tex','extend':'tex'},
+            {'content_type':'application/x-texinfo','extend':'texi'},
+            {'content_type':'application/x-texinfo','extend':'texinfo'},
+            {'content_type':'application/x-troff','extend':'roff'},
+            {'content_type':'application/x-troff','extend':'t'},
+            {'content_type':'application/x-troff','extend':'tr'},
+            {'content_type':'application/x-troff-man','extend':'man'},
+            {'content_type':'application/x-troff-me','extend':'me'},
+            {'content_type':'application/x-troff-ms','extend':'ms'},
+            {'content_type':'application/x-ustar','extend':'ustar'},
+            {'content_type':'application/x-wais-source','extend':'src'},
+            {'content_type':'application/x-x509-ca-cert','extend':'cer'},
+            {'content_type':'application/x-x509-ca-cert','extend':'crt'},
+            {'content_type':'application/x-x509-ca-cert','extend':'der'},
+            {'content_type':'application/ynd.ms-pkipko','extend':'pko'},
+            {'content_type':'application/zip','extend':'zip'},
+            {'content_type':'audio/basic','extend':'au'},
+            {'content_type':'audio/basic','extend':'snd'},
+            {'content_type':'audio/mid','extend':'mid'},
+            {'content_type':'audio/mid','extend':'rmi'},
+            {'content_type':'audio/mpeg','extend':'mp3'},
+            {'content_type':'audio/x-aiff','extend':'aif'},
+            {'content_type':'audio/x-aiff','extend':'aifc'},
+            {'content_type':'audio/x-aiff','extend':'aiff'},
+            {'content_type':'audio/x-mpegurl','extend':'m3u'},
+            {'content_type':'audio/x-pn-realaudio','extend':'ra'},
+            {'content_type':'audio/x-pn-realaudio','extend':'ram'},
+            {'content_type':'audio/x-wav','extend':'wav'},
+            {'content_type':'image/bmp','extend':'bmp'},
+            {'content_type':'image/cis-cod','extend':'cod'},
+            {'content_type':'image/gif','extend':'gif'},
+            {'content_type':'image/ief','extend':'ief'},
+            {'content_type':'image/jpeg','extend':'jpe'},
+            {'content_type':'image/jpeg','extend':'jpeg'},
+            {'content_type':'image/jpeg','extend':'jpg'},
+            {'content_type':'image/pipeg','extend':'jfif'},
+            {'content_type':'image/svg+xml','extend':'svg'},
+            {'content_type':'image/tiff','extend':'tif'},
+            {'content_type':'image/tiff','extend':'tiff'},
+            {'content_type':'image/x-cmu-raster','extend':'ras'},
+            {'content_type':'image/x-cmx','extend':'cmx'},
+            {'content_type':'image/x-icon','extend':'ico'},
+            {'content_type':'image/x-portable-anymap','extend':'pnm'},
+            {'content_type':'image/x-portable-bitmap','extend':'pbm'},
+            {'content_type':'image/x-portable-graymap','extend':'pgm'},
+            {'content_type':'image/x-portable-pixmap','extend':'ppm'},
+            {'content_type':'image/x-rgb','extend':'rgb'},
+            {'content_type':'image/x-xbitmap','extend':'xbm'},
+            {'content_type':'image/x-xpixmap','extend':'xpm'},
+            {'content_type':'image/x-xwindowdump','extend':'xwd'},
+            {'content_type':'message/rfc822','extend':'mht'},
+            {'content_type':'message/rfc822','extend':'mhtml'},
+            {'content_type':'message/rfc822','extend':'nws'},
+            {'content_type':'text/css','extend':'css'},
+            {'content_type':'text/h323','extend':'323'},
+            {'content_type':'text/html','extend':'htm'},
+            {'content_type':'text/html','extend':'html'},
+            {'content_type':'text/html','extend':'stm'},
+            {'content_type':'text/iuls','extend':'uls'},
+            {'content_type':'text/plain','extend':'bas'},
+            {'content_type':'text/plain','extend':'c'},
+            {'content_type':'text/plain','extend':'h'},
+            {'content_type':'text/plain','extend':'txt'},
+            {'content_type':'text/richtext','extend':'rtx'},
+            {'content_type':'text/scriptlet','extend':'sct'},
+            {'content_type':'text/tab-separated-values','extend':'tsv'},
+            {'content_type':'text/webviewhtml','extend':'htt'},
+            {'content_type':'text/x-component','extend':'htc'},
+            {'content_type':'text/x-setext','extend':'etx'},
+            {'content_type':'text/x-vcard','extend':'vcf'},
+            {'content_type':'video/mpeg','extend':'mp2'},
+            {'content_type':'video/mpeg','extend':'mpa'},
+            {'content_type':'video/mpeg','extend':'mpe'},
+            {'content_type':'video/mpeg','extend':'mpeg'},
+            {'content_type':'video/mpeg','extend':'mpg'},
+            {'content_type':'video/mpeg','extend':'mpv2'},
+            {'content_type':'video/quicktime','extend':'mov'},
+            {'content_type':'video/quicktime','extend':'qt'},
+            {'content_type':'video/x-la-asf','extend':'lsf'},
+            {'content_type':'video/x-la-asf','extend':'lsx'},
+            {'content_type':'video/x-ms-asf','extend':'asf'},
+            {'content_type':'video/x-ms-asf','extend':'asr'},
+            {'content_type':'video/x-ms-asf','extend':'asx'},
+            {'content_type':'video/x-msvideo','extend':'avi'},
+            {'content_type':'video/x-sgi-movie','extend':'movie'},
+            {'content_type':'x-world/x-vrml','extend':'flr'},
+            {'content_type':'x-world/x-vrml','extend':'vrml'},
+            {'content_type':'x-world/x-vrml','extend':'wrl'},
+            {'content_type':'x-world/x-vrml','extend':'wrz'},
+            {'content_type':'x-world/x-vrml','extend':'xaf'},
+            {'content_type':'x-world/x-vrml','extend':'xof'}
+            ]
+    }
+  }
+}
+</script>

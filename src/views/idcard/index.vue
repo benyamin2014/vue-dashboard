@@ -20,7 +20,7 @@
         </el-form-item>
         <el-form-item label="出生日期">
           <el-col :span="5">
-            <el-date-picker v-model="form.date1" type="date" @change="dateChangebirthday" format="yyyy-MM-dd" value-format="yyyy-MM-dd" placeholder="Pick a date" style="width: 100%;" />
+            <el-date-picker v-model="form.date1" type="date" format="yyyy-MM-dd" value-format="yyyy-MM-dd" placeholder="Pick a date" @change="dateChangebirthday" />
           </el-col>
         </el-form-item>
         <el-form-item label="个数">
@@ -85,36 +85,30 @@
         </el-table-column>
       </el-table>
     </el-card>
-      <el-dialog
-        v-model="dialogVisible"
-        title="模拟身份证图片"
-        :visible.sync="dialogVisible"
-        :close-on-click-modal="false"
-        :append-to-body="true"
-        :modal="true"
-      >
+    <el-dialog
+      v-model="dialogVisible"
+      title="模拟身份证图片"
+      :visible.sync="dialogVisible"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+      :modal="true"
+    >
       <div style="text-align:center">
-       <span style="color:red">注意：本图片仅供测试使用，禁止从事违法活动</span>
-      <img :src="picture"></img>
+        <span style="color:red">注意：本图片仅供测试使用，禁止从事违法活动</span>
+        <img :src="picture"></img>
       </div>
-      </el-dialog>
-            <div style="display:none">
-               <canvas id="canvas1" width="600" height="680" ref="canvas1" />
+    </el-dialog>
+    <div style="display:none">
+      <canvas id="canvas1" ref="canvas1" width="600" height="680" />
 
-                <img ref="pic" src="../../assets/em.png">
-              </div>
+      <img ref="pic" src="../../assets/em.png">
+    </div>
   </div>
-
 
 </template>
 
 <script>
 export default {
-  updated() {
-        console.log('canvas:' + this.$refs.canvas1)
-
-    console.log('canvas:' + this.$refs.canvas)
-  },
 
   data() {
     return {
@@ -134,12 +128,17 @@ export default {
 
     }
   },
+  updated() {
+    console.log('canvas:' + this.$refs.canvas1)
+
+    console.log('canvas:' + this.$refs.canvas)
+  },
   methods: {
     onSubmit() {
       var _this = this
       var fm = _this.form
       const region = fm.region
-      console.log("date" + fm.date1)
+      console.log('date' + fm.date1)
       const birth = fm.date1.replace(new RegExp('-', 'g'), '')
       const delivery = fm.delivery
       const nums = fm.nums
@@ -160,7 +159,7 @@ export default {
       console.log(_this.result)
     },
     showPic(row) {
-      let _this = this
+      const _this = this
       console.log(row)
       const canvas = this.$refs.canvas1
       console.log('canvas:' + canvas)
@@ -180,12 +179,11 @@ export default {
       ctx.fillStyle = '#191919'
       ctx.font = 'normal small-caps bold 13px arial'
 
-      var nameStr = "";
-      for(var i=0;i<row.name.length;i++) {
-        nameStr += (" "+ row.name.charAt(i))
+      var nameStr = ''
+      for (var i = 0; i < row.name.length; i++) {
+        nameStr += (' ' + row.name.charAt(i))
       }
       console.log(nameStr)
-
 
       ctx.fillText(nameStr, 115, 94)
       ctx.fillText(row.sex, 115, 126)
@@ -193,14 +191,13 @@ export default {
       ctx.fillText(row.birth.substring(0, 4), 115, 158)// 年
       ctx.fillText(row.birth.substring(4, 6), 190, 158)// 月
       ctx.fillText(row.birth.substring(6, 8), 235, 158)// 日
-      ctx.fillText(row.addr.length>12?row.addr.substring(0,12):row.addr, 115, 192)// 地址
+      ctx.fillText(row.addr.length > 12 ? row.addr.substring(0, 12) : row.addr, 115, 192)// 地址
 
-      var str = "";
-      for(var i=0;i<row.no.length;i++) {
-        str += (" "+ row.no.charAt(i))
+      var str = ''
+      for (var i = 0; i < row.no.length; i++) {
+        str += (' ' + row.no.charAt(i))
       }
       console.log(str)
-
 
       ctx.fillText(str, 190, 278)// 身份证号
 
@@ -213,7 +210,6 @@ export default {
       this.picture = canvas.toDataURL()
       console.log(this.picture)
       this.dialogVisible = true
-
     },
     onCancel() {
       this.$message({
@@ -233,13 +229,10 @@ export default {
       switch (arguments.length) {
         case 1:
           return parseInt(Math.random() * minNum + 1, 10)
-          break
         case 2:
           return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10)
-          break
         default:
           return 0
-          break
       }
     },
     idcardgen(data) {

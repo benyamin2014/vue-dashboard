@@ -148,7 +148,7 @@ export default {
       if (iv) {
         cfg.iv = iv
       }
-
+      console.log('dec:' + enc.decrypt(content, key, cfg))
       _this.form.result = enc.decrypt(content, key, cfg)
     },
     exchange() {

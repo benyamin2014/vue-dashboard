@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div class="app-wrapper">
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
@@ -7,10 +7,10 @@
       <app-main />
 
     </div>
-          <div class="footer">
+    <div class="footer">
 
-          Copyright © 2019 在线测试工具 | 京ICP备19020756号
-          </div>
+      Copyright © 2019 在线测试工具 | 京ICP备19020756号
+    </div>
   </div>
 </template>
 
