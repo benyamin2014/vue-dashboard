@@ -178,6 +178,12 @@ export const constantRoutes = [
         meta: { title: 'ascii', icon: 'form' }
       },
       {
+        path: 'htmlescape',
+        name: 'htmlescape',
+        component: () => import('@/views/escape/index'),
+        meta: { title: 'htmlescape', icon: 'form' }
+      },
+      {
         path: 'httpstatus',
         name: 'httpstatus',
         component: () => import('@/views/httpstatus/index'),

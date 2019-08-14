@@ -54,6 +54,7 @@
       <el-submenu index="7">
         <template slot="title">对照表</template>
         <el-menu-item index="/doc/ascii">Ascii码</el-menu-item>
+        <el-menu-item index="/doc/htmlescape">HTML转义符</el-menu-item>
         <el-menu-item index="/doc/httpstatus">HTTP状态码</el-menu-item>
         <el-menu-item index="/doc/httpcontent">MIME类型</el-menu-item>
         <!-- 暂时屏蔽
