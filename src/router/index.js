@@ -78,14 +78,32 @@ export const constantRoutes = [
   //  },
 
   {
-    path: '/idcard',
+    path: '/tools',
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: 'idcard',
         name: '身份证模拟器',
         component: () => import('@/views/idcard/index'),
         meta: { title: '身份证模拟器', icon: 'form' }
+      },
+      {
+        path: 'color',
+        name: '取色板',
+        component: () => import('@/views/color/index'),
+        meta: { title: '取色板', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/format',
+    component: Layout,
+    children: [
+      {
+        path: 'jsonvalidator',
+        name: 'jsonvalidator',
+        component: () => import('@/views/jsonvalidator/index'),
+        meta: { title: 'jsonvalidator', icon: 'form' }
       }
     ]
   },

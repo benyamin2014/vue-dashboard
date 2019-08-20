@@ -4,7 +4,8 @@
       <el-menu-item index="/dashboard">主页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">模拟工具</template>
-        <el-menu-item index="/idcard/index">身份证模拟器</el-menu-item>
+        <el-menu-item index="/tools/idcard">身份证模拟器</el-menu-item>
+        <el-menu-item index="/tools/color">取色板</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">加密编码</template>
@@ -27,6 +28,7 @@
         <template slot="title">格式化</template>
         <el-submenu index="4-1">
           <template slot="title">JSON</template>
+          <el-menu-item index="/format/jsonvalidator">JSON验证器</el-menu-item>
           <el-menu-item><a href="https://jsoneditoronline.org/" target="_blank">JSON编辑器</a></el-menu-item>
         </el-submenu>
       </el-submenu>

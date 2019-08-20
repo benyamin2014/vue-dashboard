@@ -27,6 +27,7 @@
     "path-to-regexp": "2.4.0",
     "v-region": "^2.1.3",
     "vue": "2.6.10",
+    "vue-json-editor": "^1.3.2",
     "vue-router": "3.0.6",
     "vuex": "3.1.0"
   },
