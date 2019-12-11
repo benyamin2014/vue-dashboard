@@ -4,6 +4,7 @@
       <el-menu-item index="/dashboard">主页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">模拟工具</template>
+        <el-menu-item><a href="https://open.weibo.com/tools/console" target="_blank">Forsaken Mail（临时邮箱）</a></el-menu-item>
         <el-menu-item index="/tools/idcard">身份证模拟器</el-menu-item>
         <el-menu-item index="/tools/color">取色板</el-menu-item>
       </el-submenu>
@@ -96,6 +97,17 @@
           <template slot="title">新浪</template>
           <el-menu-item><a href="https://open.weibo.com/tools/console" target="_blank">新浪微博API测试工具</a></el-menu-item>
         </el-submenu>
+        <el-submenu index="8-6">
+          <template slot="title">网络安全</template>
+          <el-menu-item><a href="https://myssl.com" target="_blank">MySSL.com</a></el-menu-item>
+          <el-menu-item><a href="https://www.trustasia.com/tools#ssl" target="_blank">trustasia</a></el-menu-item>
+          <el-menu-item><a href="https://www.chinassl.net/" target="_blank">chinassl</a></el-menu-item>
+          <el-menu-item><a href="http://tool.chacuo.net/cryptrsapubkey" target="_blank">chacuo</a></el-menu-item>
+
+          <el-menu-item><a href="https://ip.cn" target="_blank">IP查询</a></el-menu-item>
+          <el-menu-item><a href="https://www.ipip.net/ip.html" target="_blank">IPIP</a></el-menu-item>
+
+        </el-submenu>
       </el-submenu>
 
 
@@ -122,6 +134,13 @@
         <el-submenu index="9-5">
           <template slot="title">新浪</template>
           <el-menu-item><a href="https://open.weibo.com/wiki/%E9%A6%96%E9%A1%B5" target="_blank">微博开放平台</a></el-menu-item>
+        </el-submenu>
+        <el-submenu index="9-6">
+          <template slot="title">OAUTH</template>
+          <el-menu-item><a href="https://oauth1.wp-api.org/docs/basics/Auth-Flow.html" target="_blank">OAuth1.0官网</a></el-menu-item>
+          <el-menu-item><a href="https://tools.ietf.org/html/rfc5849" target="_blank">OAuth1.0规范（rfc5849）</a></el-menu-item>
+          <el-menu-item><a href="https://oauth.net/2/" target="_blank">OAuth2.0官网</a></el-menu-item>
+          <el-menu-item><a href="https://tools.ietf.org/html/rfc6749" target="_blank">OAuth2.0规范（rfc6749）</a></el-menu-item>
         </el-submenu>
       </el-submenu>
     </el-menu>
