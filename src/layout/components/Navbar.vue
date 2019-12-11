@@ -4,7 +4,7 @@
       <el-menu-item index="/dashboard">主页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">模拟工具</template>
-        <el-menu-item><a href="https://open.weibo.com/tools/console" target="_blank">Forsaken Mail（临时邮箱）</a></el-menu-item>
+        <el-menu-item><a href="https://mail.52bugs.com" target="_blank">Forsaken Mail（临时邮箱）</a></el-menu-item>
         <el-menu-item index="/tools/idcard">身份证模拟器</el-menu-item>
         <el-menu-item index="/tools/color">取色板</el-menu-item>
       </el-submenu>
